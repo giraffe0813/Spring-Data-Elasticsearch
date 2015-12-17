@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>JavaConfig类 | README</title>
+        <title>JavaConfig | README</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.5">
@@ -50,10 +50,10 @@
         
     <div class="book"
         data-level="4.5.2"
-        data-chapter-title="JavaConfig类"
+        data-chapter-title="JavaConfig"
         data-filepath="4/4.5/4.5.2.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 16:51:59 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -375,7 +375,7 @@
                         
                             <b>4.5.2.</b>
                         
-                        JavaConfig类
+                        JavaConfig
                     </a>
             
             
@@ -841,7 +841,22 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="javaconfig&#x7C7B;">JavaConfig&#x7C7B;</h1>
+                        <h1 id="javaconfig">JavaConfig</h1>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;JavaConfig&#x7C7B;&#x4E2D;&#x7684;&#x6CE8;&#x89E3;@Enable${store}Repositories&#x6765;&#x914D;&#x7F6E;&#x626B;&#x63CF;&#x5305;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x8981;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5B58;&#x50A8;&#x66FF;&#x6362;&#x4E0D;&#x540C;&#x7684;${store}&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4F7F;&#x7528;JavaConfig&#x914D;&#x7F6E;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;:
+Example 13. Sample annotation based repository configuration</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Configuration</span>
+<span class="hljs-annotation">@EnableJpaRepositories</span>(<span class="hljs-string">&quot;com.acme.repositories&quot;</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApplicationConfiguration</span> </span>{
+
+  <span class="hljs-annotation">@Bean</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> EntityManagerFactory <span class="hljs-title">entityManagerFactory</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">//...</span>
+  }
+}
+</code></pre>
+<blockquote>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x9488;&#x5BF9;Jpa&#x7684;&#x6CE8;&#x89E3;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x7684;&#x5B58;&#x50A8;&#x4FEE;&#x6539;&#x3002;&#x540C;&#x6837;&#x5730;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x5B58;&#x50A8;&#x4E0D;&#x540C;&#xFF0C;&#x5B9A;&#x4E49;&#x7684;<em>EntityManagerFactory</em>bean&#x4E5F;&#x4E0D;&#x540C;&#x3002;&#x5177;&#x4F53;&#x8BF7;&#x67E5;&#x770B;&#x9488;&#x5BF9;&#x6307;&#x5B9A;&#x5B58;&#x50A8;&#x914D;&#x7F6E;&#x7684;&#x6587;&#x6863;&#x3002;</p>
+</blockquote>
 
                     
                     </section>

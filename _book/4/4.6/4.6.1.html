@@ -53,7 +53,7 @@
         data-chapter-title="为单一的repositories添加自定义方法"
         data-filepath="4/4.6/4.6.1.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 16:51:59 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -375,7 +375,7 @@
                         
                             <b>4.5.2.</b>
                         
-                        JavaConfig类
+                        JavaConfig
                     </a>
             
             
@@ -842,6 +842,39 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x4E3A;&#x5355;&#x4E00;&#x7684;repositories&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;">&#x4E3A;&#x5355;&#x4E00;&#x7684;repositories&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;</h1>
+<p>&#x4E3A;&#x4E86;&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x6765;&#x4E30;&#x5BCC;repository&#xFF0C;&#x9996;&#x5148;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x548C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;</p>
+<p>Example 15. Interface for custom repository functionality(&#x81EA;&#x5B9A;&#x4E49;&#x63A5;&#x53E3;)</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserRepositoryCustom</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">someCustomMethod</span><span class="hljs-params">(User user)</span></span>;
+}
+</code></pre>
+<p>Example 16. Implementation of custom repository functionality(&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;)</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepositoryImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserRepositoryCustom</span> </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">someCustomMethod</span><span class="hljs-params">(User user)</span> </span>{
+    <span class="hljs-comment">// Your custom implementation</span>
+  }
+}
+</code></pre>
+<blockquote>
+<p>&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x540D;&#x5B57;&#x540E;&#x7F00;&#x5FC5;&#x987B;&#x4E3A;<em>impl</em>&#x624D;&#x80FD;&#x5728;&#x626B;&#x63CF;&#x5305;&#x65F6;&#x88AB;&#x627E;&#x5230;&#x3002;</p>
+</blockquote>
+<p>&#x5B9E;&#x73B0;&#x7C7B;&#x672C;&#x8EAB;&#x5E76;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;Spring Data&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;Srping&#x7684;bean&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x662F;&#x7528;&#x6807;&#x51C6;&#x7684;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x5728;&#x5176;&#x4E2D;&#x6CE8;&#x5165;&#x5176;&#x5B83;&#x76F8;&#x5173;&#x7684;bean&#xFF0C;&#x6BD4;&#x5982;JdbcTemplate&#x7B49;&#x7B49;&#x3002;</p>
+<p>Example 17. Changes to the your basic repository interface(&#x4FEE;&#x6539;&#x57FA;&#x7840;&#x7684;repository&#x63A5;&#x53E3;)</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">CrudRepository</span>&lt;<span class="hljs-title">User</span>, <span class="hljs-title">Long</span>&gt;, <span class="hljs-title">UserRepositoryCustom</span> </span>{
+
+  <span class="hljs-comment">// Declare query methods here</span>
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x5728;&#x8BA9;&#x6807;&#x51C6;&#x7684;repository&#x63A5;&#x53E3;&#x7EE7;&#x627F;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5C06;&#x6807;&#x51C6;&#x7684;CRUD&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x65B9;&#x6CD5;&#x7ED3;&#x5408;&#x5230;&#x4E86;&#x4E00;&#x8D77;&#x3002;</p>
+<h3 id="&#x914D;&#x7F6E;">&#x914D;&#x7F6E;</h3>
+<p>&#x5728;&#x4F7F;&#x7528;Xml&#x914D;&#x7F6E;&#x65F6;&#xFF0C;Spring&#x6846;&#x67B6;&#x4F1A;&#x81EA;&#x52A8;&#x68C0;&#x6D4B;&#x6307;&#x5B9A;&#x5305;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x540E;&#x7F00;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x5C5E;&#x6027;<em>repository-impl-postfix</em>&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x9ED8;&#x8BA4;&#x540E;&#x7F00;&#x662F;<em>Impl</em>&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">repositories</span> <span class="hljs-attribute">base-package</span>=<span class="hljs-value">&quot;com.acme.repository&quot;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">repositories</span> <span class="hljs-attribute">base-package</span>=<span class="hljs-value">&quot;com.acme.repository&quot;</span> <span class="hljs-attribute">repository-impl-postfix</span>=<span class="hljs-value">&quot;FooBar&quot;</span> /&gt;</span>
+</code></pre>
+<p>&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#x4E2D;&#xFF0C;spring&#x4F1A;&#x627E;&#x5230;&#x7C7B;<em>com.acme.repository.UserRepositoryImpl</em>&#xFF0C;&#x800C;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x914D;&#x7F6E;&#x4E2D;&#xFF0C;spring&#x4F1A;&#x5C1D;&#x8BD5;&#x67E5;&#x627E;<em>com.acme.repository.UserRepositoryFooBar</em>&#x7C7B;</p>
+<h3 id="&#x4EBA;&#x5DE5;&#x88C5;&#x8F7D;">&#x4EBA;&#x5DE5;&#x88C5;&#x8F7D;</h3>
 
                     
                     </section>

@@ -53,7 +53,7 @@
         data-chapter-title="查询方法"
         data-filepath="4/4.2.md"
         data-basepath=".."
-        data-revision="Thu Dec 17 2015 13:58:37 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 16:51:59 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -310,6 +310,21 @@
                             <b>4.4.6.</b>
                         
                         Stream处理查询结果
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.7" data-path="4/4.4/4.4.7.html">
+            
+                
+                    <a href="../4/4.4/4.4.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.7.</b>
+                        
+                        异步处理查询结果
                     </a>
             
             
@@ -827,8 +842,8 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;">&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;</h1>
-<p>&#x6807;&#x51C6;&#x7684;CRUD(&#x589E;&#x5220;&#x6539;&#x67E5;)&#x529F;&#x80FD;&#x90FD;&#x8981;&#x4F7F;&#x7528;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x6765;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x5E93;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;Spring Data&#xFF0C;&#x53EA;&#x8981;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x3002;
-1.&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;Repository&#x63A5;&#x53E3;&#x6216;&#x5176;&#x5B50;&#x63A5;&#x53E3;&#x7684;&#x6301;&#x4E45;&#x5C42;&#x63A5;&#x53E3;&#x3002;&#x5E76;&#x6807;&#x660E;&#x8981;&#x5904;&#x7406;&#x7684;&#x57DF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x53CA;&#x5176;&#x4E3B;&#x952E;&#x7684;&#x7C7B;&#x578B;(&#x5728;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x8981;&#x5904;&#x7406;&#x7684;&#x57DF;&#x5BF9;&#x8C61;&#x662F;Person&#xFF0C;&#x5176;&#x4E3B;&#x952E;&#x7C7B;&#x578B;&#x662F;Long)</p>
+<p>&#x6807;&#x51C6;&#x7684;CRUD(&#x589E;&#x5220;&#x6539;&#x67E5;)&#x529F;&#x80FD;&#x90FD;&#x8981;&#x4F7F;&#x7528;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x6765;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x5E93;&#x3002;&#x4F46;&#x901A;&#x8FC7;&#x4F7F;&#x7528;Spring Data&#xFF0C;&#x53EA;&#x8981;&#x56DB;&#x4E2A;&#x6B65;&#x9AA4;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x3002;   </p>
+<p>1.&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x7EE7;&#x627F;Repository&#x63A5;&#x53E3;&#x6216;&#x5176;&#x5B50;&#x63A5;&#x53E3;&#x7684;&#x6301;&#x4E45;&#x5C42;&#x63A5;&#x53E3;&#x3002;&#x5E76;&#x6807;&#x660E;&#x8981;&#x5904;&#x7406;&#x7684;&#x57DF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x53CA;&#x5176;&#x4E3B;&#x952E;&#x7684;&#x7C7B;&#x578B;(&#x5728;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x8981;&#x5904;&#x7406;&#x7684;&#x57DF;&#x5BF9;&#x8C61;&#x662F;Person&#xFF0C;&#x5176;&#x4E3B;&#x952E;&#x7C7B;&#x578B;&#x662F;Long)</p>
 <pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PersonRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Repository</span>&lt;<span class="hljs-title">Person</span>, <span class="hljs-title">Long</span>&gt; </span>{...}
 </code></pre>
 <p>2.&#x5728;&#x63A5;&#x53E3;&#x4E2D;&#x58F0;&#x660E;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;(spring&#x4F1A;&#x4E3A;&#x5176;&#x751F;&#x6210;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;)</p>
@@ -836,8 +851,7 @@
   <span class="hljs-function">List&lt;Person&gt; <span class="hljs-title">findByLastname</span><span class="hljs-params">(String lastname)</span></span>;
 }
 </code></pre>
-<p>3.&#x8BA9;Spring&#x521B;&#x5EFA;&#x5BF9;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x7684;&#x4EE3;&#x7406;&#x5B9E;&#x4F8B;&#x3002;
-&#x901A;&#x8FC7;JavaConfig</p>
+<p>3.&#x8BA9;Spring&#x521B;&#x5EFA;&#x5BF9;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x7684;&#x4EE3;&#x7406;&#x5B9E;&#x4F8B;&#x3002;<br>&#x901A;&#x8FC7;JavaConfig</p>
 <pre><code class="lang-java"><span class="hljs-keyword">import</span> org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 <span class="hljs-annotation">@EnableJpaRepositories</span>

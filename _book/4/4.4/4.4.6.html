@@ -37,7 +37,7 @@
         
     
     
-    <link rel="next" href="../../4/4.5.html" />
+    <link rel="next" href="../../4/4.4/4.4.7.html" />
     
     
     <link rel="prev" href="../../4/4.4/4.4.5.html" />
@@ -53,7 +53,7 @@
         data-chapter-title="Stream处理查询结果"
         data-filepath="4/4.4/4.4.6.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 13:58:37 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 16:51:59 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -310,6 +310,21 @@
                             <b>4.4.6.</b>
                         
                         Stream处理查询结果
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.7" data-path="4/4.4/4.4.7.html">
+            
+                
+                    <a href="../../4/4.4/4.4.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.7.</b>
+                        
+                        异步处理查询结果
                     </a>
             
             
@@ -826,7 +841,28 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="stream&#x5904;&#x7406;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;">Stream&#x5904;&#x7406;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;</h1>
+                        <h1 id="&#x5229;&#x7528;stream&#x6D41;&#x5904;&#x7406;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;">&#x5229;&#x7528;Stream(&#x6D41;)&#x5904;&#x7406;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;</h1>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Stream<T>&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x5BF9;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x9010;&#x4E2A;&#x5904;&#x7406;&#x3002;</T></p>
+<p>Example 9. Stream the result of a query with Java 8 Stream<T>(stream&#x67E5;&#x8BE2;&#x7ED3;&#x679C;)</T></p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Query</span>(<span class="hljs-string">&quot;select u from User u&quot;</span>)
+<span class="hljs-function">Stream&lt;User&gt; <span class="hljs-title">findAllByCustomQueryAndStream</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function">Stream&lt;User&gt; <span class="hljs-title">readAllByFirstnameNotNull</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-annotation">@Query</span>(<span class="hljs-string">&quot;select u from User u&quot;</span>)
+<span class="hljs-function">Stream&lt;User&gt; <span class="hljs-title">streamAllPaged</span><span class="hljs-params">(Pageable pageable)</span></span>;
+</code></pre>
+<blockquote>
+<p>&#x4E00;&#x4E2A;Stream&#x4E2D;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x5E95;&#x5C42;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7684;&#x7279;&#x5B9A;&#x8D44;&#x6E90;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x540E;&#x5FC5;&#x987B;&#x5173;&#x95ED;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;close()&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;java 7&#x4E2D;&#x7684;try-with-resources&#x5757;</p>
+</blockquote>
+<p>Example 10. Working with a Stream<T> result in a try-with-resources block(&#x5728;&#x5757;&#x4E2D;&#x4F7F;&#x7528;Stream<T>)</T></T></p>
+<pre><code class="lang-java"><span class="hljs-keyword">try</span> (Stream&lt;User&gt; stream = repository.findAllByCustomQueryAndStream()) {
+  stream.forEach(&#x2026;);
+}
+</code></pre>
+<blockquote>
+<p>&#x76EE;&#x524D;&#xFF0C;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;Spring Data&#x6A21;&#x5757;&#x90FD;&#x652F;&#x6301;&#x5C06;Stream<T>&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</T></p>
+</blockquote>
 
                     
                     </section>
@@ -840,7 +876,7 @@
         <a href="../../4/4.4/4.4.5.html" class="navigation navigation-prev " aria-label="Previous page: 限定查询结果集大小"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../4/4.5.html" class="navigation navigation-next " aria-label="Next page: 创建repository实例"><i class="fa fa-angle-right"></i></a>
+        <a href="../../4/4.4/4.4.7.html" class="navigation navigation-next " aria-label="Next page: 异步处理查询结果"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

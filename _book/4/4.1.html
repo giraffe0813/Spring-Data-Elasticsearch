@@ -53,7 +53,7 @@
         data-chapter-title="核心概念"
         data-filepath="4/4.1.md"
         data-basepath=".."
-        data-revision="Thu Dec 17 2015 13:58:37 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 16:51:59 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -310,6 +310,21 @@
                             <b>4.4.6.</b>
                         
                         Stream处理查询结果
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.7" data-path="4/4.4/4.4.7.html">
+            
+                
+                    <a href="../4/4.4/4.4.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.7.</b>
+                        
+                        异步处理查询结果
                     </a>
             
             
@@ -828,7 +843,7 @@
                     
                         <h1 id="&#x6838;&#x5FC3;&#x6982;&#x5FF5;">&#x6838;&#x5FC3;&#x6982;&#x5FF5;</h1>
 <p>Spring Data repository&#x62BD;&#x8C61;&#x4E2D;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x63A5;&#x53E3;&#x5C31;&#x662F;<em>Repository</em>(&#x663E;&#x800C;&#x6613;&#x89C1;&#x7684;&#x54C8;)&#x3002;&#x8BE5;&#x63A5;&#x53E3;&#x4F7F;&#x7528;&#x4E86;&#x6CDB;&#x578B;&#xFF0C;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x4E24;&#x4E2A;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x63A5;&#x53E3;&#x5904;&#x7406;&#x7684;&#x57DF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x57DF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x7684;&#x4E3B;&#x952E;&#x7C7B;&#x578B;&#x3002;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x5E38;&#x88AB;&#x770B;&#x505A;&#x662F;&#x4E00;&#x4E2A;&#x6807;&#x8BB0;&#x578B;&#x63A5;&#x53E3;&#xFF0C;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x8981;&#x64CD;&#x4F5C;&#x7684;&#x57DF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x548C;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x8BC6;&#x522B;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x5728;Repository&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;<em>CrudRepository</em>&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x4E86;&#x9488;&#x5BF9;&#x5B9E;&#x4F53;&#x7C7B;&#x7684;&#x590D;&#x6742;&#x7684;CRUD(&#x589E;&#x5220;&#x6539;&#x67E5;)&#x64CD;&#x4F5C;</p>
-<p>Example 1.CrudRepository interface</p>
+<p>Example 1.CrudRepository interface(CrudRepository&#x63A5;&#x53E3;)</p>
 <pre><code class="lang-java">
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CrudRepository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Serializable</span>&gt;
     <span class="hljs-keyword">extends</span> <span class="hljs-title">Repository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span>&gt; </span>{
@@ -858,7 +873,7 @@
 <blockquote>
 <p>Spring Data&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x9488;&#x5BF9;&#x7279;&#x5B9A;&#x6301;&#x4E45;&#x5316;&#x6280;&#x672F;&#x7684;&#x62BD;&#x8C61;&#xFF0C;&#x4F8B;&#x5982;<em>JpaRepository</em>&#x548C;<em>MongoRepository</em>&#x3002;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x5747;&#x7EE7;&#x627F;&#x4E86;<em>CrudRepository</em></p>
 </blockquote>
-<p><em>PagingAndSortingRepository</em>&#x63A5;&#x53E3;&#x5728;<em>CrudRepository</em>&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x5B9E;&#x4F53;&#x7C7B;&#x8FDB;&#x884C;&#x5206;&#x9875;&#x548C;&#x6392;&#x5E8F;&#x3002;</p>
+<p><em>PagingAndSortingRepository</em>&#x63A5;&#x53E3;&#x5728;<em>CrudRepository</em>&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x5B9E;&#x4F53;&#x7C7B;&#x8FDB;&#x884C;&#x5206;&#x9875;&#x548C;&#x6392;&#x5E8F;&#x3002;</p>
 <p>Example 2.PagingAndSortingRepository</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PagingAndSortingRepository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Serializable</span>&gt;
   <span class="hljs-keyword">extends</span> <span class="hljs-title">CrudRepository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span>&gt; </span>{

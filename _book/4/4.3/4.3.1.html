@@ -53,7 +53,7 @@
         data-chapter-title="调整repository定义"
         data-filepath="4/4.3/4.3.1.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 13:58:37 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 16:51:59 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -310,6 +310,21 @@
                             <b>4.4.6.</b>
                         
                         Stream处理查询结果
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4.7" data-path="4/4.4/4.4.7.html">
+            
+                
+                    <a href="../../4/4.4/4.4.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.7.</b>
+                        
+                        异步处理查询结果
                     </a>
             
             
@@ -827,13 +842,13 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x8C03;&#x6574;repository&#x5B9A;&#x4E49;">&#x8C03;&#x6574;repository&#x5B9A;&#x4E49;</h1>
-<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x7684;repository&#x63A5;&#x53E3;&#x4F1A;&#x7EE7;&#x627F;Repository,CrudRepository&#x6216;PagingAndSortingRepository&#x63A5;&#x53E3;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x7EE7;&#x627F;Spring Data&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x7684;repository&#x63A5;&#x53E3;&#x4E0A;&#x52A0;&#x6CE8;&#x89E3;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#x3002;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x7684;repository&#x63A5;&#x53E3;&#x4F1A;&#x7EE7;&#x627F;Repository,CrudRepository&#x6216;PagingAndSortingRepository&#x63A5;&#x53E3;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x901A;&#x8FC7;extend&#x5173;&#x952E;&#x5B57;&#x7EE7;&#x627F;Spring Data&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x7684;repository&#x63A5;&#x53E3;&#x4E0A;&#x52A0;&#x6CE8;&#x89E3;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x7B49;&#x4EF7;&#x7684;&#x3002;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-java"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserDao</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Repository</span>&lt;<span class="hljs-title">AccountInfo</span>, <span class="hljs-title">Long</span>&gt;</span>{...} 
 
  <span class="hljs-annotation">@RepositoryDefinition</span>(domainClass = Person, idClass = Long.class) 
  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PersonRepository</span> </span>{...}
 </code></pre>
-<p>&#x6B64;&#x5916;&#xFF0C;&#x7EE7;&#x627F;CrudRepository&#x63A5;&#x53E3;&#xFF0C;&#x4F1A;&#x4E3A;&#x64CD;&#x4F5C;&#x57DF;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7EC4;&#x53EF;&#x7ACB;&#x5373;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x66B4;&#x9732;CrudRepository&#x63A5;&#x53E3;&#x7684;&#x5168;&#x90E8;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x9700;&#x7B80;&#x5355;&#x7684;&#x5C06;&#x9700;&#x8981;&#x7684;&#x65B9;&#x6CD5;&#x590D;&#x5236;&#x5230;&#x81EA;&#x5DF1;&#x7684;repository&#x63A5;&#x53E3;&#x4E2D;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x7EE7;&#x627F;CrudRepository&#x63A5;&#x53E3;&#xFF0C;&#x4F1A;&#x4E3A;&#x64CD;&#x4F5C;&#x57DF;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7EC4;&#x53EF;&#x7ACB;&#x5373;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x60F3;&#x66B4;&#x9732;CrudRepository&#x63A5;&#x53E3;&#x7684;&#x5168;&#x90E8;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x9700;&#x7B80;&#x5355;&#x7684;&#x5C06;&#x9700;&#x8981;&#x7684;&#x65B9;&#x6CD5;&#x590D;&#x5236;&#x5230;&#x81EA;&#x5DF1;&#x7684;repository&#x63A5;&#x53E3;&#x4E2D;&#x3002;</p>
 <blockquote>
 <p>&#x8FD9;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;Spring Datade Repository&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x5B9A;&#x4E49;&#x81EA;&#x5DF1;&#x7684;&#x62BD;&#x8C61;&#x63A5;&#x53E3;</p>
 </blockquote>
@@ -851,7 +866,7 @@
   <span class="hljs-function">User <span class="hljs-title">findByEmailAddress</span><span class="hljs-params">(EmailAddress emailAddress)</span></span>;
 }
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x5148;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x516C;&#x5171;&#x7684;&#x57FA;&#x7840;&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;findOne&#x548C;save&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x6240;&#x4EE5;UserRepository&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;User&#xFF0C;&#x6839;&#x636E;id&#x67E5;&#x627E;user&#x548C;&#x6839;&#x636E;&#x90AE;&#x7BB1;&#x5730;&#x5740;&#x67E5;&#x627E;User&#x3002;</p>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x516C;&#x5171;&#x7684;&#x57FA;&#x7840;&#x63A5;&#x53E3;MyBaseRepository&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;findOne&#x548C;save&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x63A5;&#x7740;&#x58F0;&#x660E;&#x4E00;&#x4E2A;UserRepository&#x7684;&#x63A5;&#x53E3;&#x5E76;&#x7EE7;&#x627F;&#x57FA;&#x7840;&#x63A5;&#x53E3;MyBaseRepository&#xFF0C;&#x6240;&#x4EE5;UserRepository&#x62E5;&#x6709;&#x4FDD;&#x5B58;User&#xFF0C;&#x6839;&#x636E;id&#x67E5;&#x627E;user&#x548C;&#x6839;&#x636E;&#x90AE;&#x7BB1;&#x5730;&#x5740;&#x67E5;&#x627E;User&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;</p>
 <blockquote>
 <p>&#x6CE8;&#x610F;&#xFF0C;&#x4E2D;&#x95F4;&#x8FC7;&#x6E21;&#x7684;&#x63A5;&#x53E3;MyBaseRepository&#x4E0A;&#x52A0;&#x4E86;NoRepositoryBean&#x6CE8;&#x89E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x6CE8;&#x89E3;&#x662F;&#x544A;&#x8BC9;Spring Data&#x4E0D;&#x8981;&#x4E3A;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x521B;&#x5EFA;repository&#x4EE3;&#x7406;&#x5B9E;&#x4F8B;&#x3002;</p>
 </blockquote>

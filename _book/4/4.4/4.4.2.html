@@ -53,7 +53,7 @@
         data-chapter-title="创建查询"
         data-filepath="4/4.4/4.4.2.md"
         data-basepath="../.."
-        data-revision="Wed Dec 16 2015 17:47:12 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 13:58:37 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -294,7 +294,7 @@
                         
                             <b>4.4.5.</b>
                         
-                        限定查询结果
+                        限定查询结果集大小
                     </a>
             
             
@@ -827,7 +827,7 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x521B;&#x5EFA;&#x67E5;&#x8BE2;">&#x521B;&#x5EFA;&#x67E5;&#x8BE2;</h1>
-<p>Spring Data repository&#x81EA;&#x5E26;&#x4E86;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x67E5;&#x8BE2;&#x6784;&#x9020;&#x5668;&#x3002;&#x5B83;&#x4F1A;&#x4ECE;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x53BB;&#x8C03;&#x7C7B;&#x4F3C;<em>find..By</em>,<em>read...By</em>,<em>query...By</em>,<em>count...By</em>&#x4E4B;&#x7C7B;&#x7684;&#x524D;&#x7F00;&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x6790;&#x5269;&#x4F59;&#x7684;&#x540D;&#x5B57;&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x52A0;&#x5165;&#x66F4;&#x591A;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x67E5;&#x8BE2;&#x65F6;&#x9700;&#x8981;distinct&#x7EA6;&#x675F;,&#x90A3;&#x4E48;&#x5728;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x52A0;&#x5165;Distinct&#x5373;&#x53EF;&#x3002;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;By&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x89E3;&#x7B26;&#xFF0C;&#x4EE3;&#x8868;&#x7740;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;And&#x6216;Or&#x6765;&#x5C06;&#x591A;&#x4E2A;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;</p>
+<p>Spring Data repository&#x81EA;&#x5E26;&#x4E86;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x67E5;&#x8BE2;&#x6784;&#x9020;&#x5668;&#x3002;&#x5B83;&#x4F1A;&#x4ECE;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x53BB;&#x6389;&#x7C7B;&#x4F3C;<em>find..By</em>,<em>read...By</em>,<em>query...By</em>,<em>count...By</em>&#x4E4B;&#x7C7B;&#x7684;&#x524D;&#x7F00;&#xFF0C;&#x7136;&#x540E;&#x89E3;&#x6790;&#x5269;&#x4F59;&#x7684;&#x540D;&#x5B57;&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x52A0;&#x5165;&#x66F4;&#x591A;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x67E5;&#x8BE2;&#x65F6;&#x9700;&#x8981;distinct&#x7EA6;&#x675F;,&#x90A3;&#x4E48;&#x5728;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x52A0;&#x5165;Distinct&#x5373;&#x53EF;&#x3002;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;By&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x89E3;&#x7B26;&#xFF0C;&#x4EE3;&#x8868;&#x7740;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;And&#x6216;Or&#x6765;&#x5C06;&#x591A;&#x4E2A;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x5173;&#x8054;&#x8D77;&#x6765;&#x3002;</p>
 <p>Example 6.Query creation from method names(&#x901A;&#x8FC7;&#x65B9;&#x6CD5;&#x540D;&#x521B;&#x5EFA;&#x67E5;&#x8BE2;)</p>
 <pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PersonRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Repository</span>&lt;<span class="hljs-title">User</span>, <span class="hljs-title">Long</span>&gt; </span>{
 

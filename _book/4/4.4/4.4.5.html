@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>限定查询结果 | README</title>
+        <title>限定查询结果集大小 | README</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.5">
@@ -50,10 +50,10 @@
         
     <div class="book"
         data-level="4.4.5"
-        data-chapter-title="限定查询结果"
+        data-chapter-title="限定查询结果集大小"
         data-filepath="4/4.4/4.4.5.md"
         data-basepath="../.."
-        data-revision="Wed Dec 16 2015 17:47:12 GMT+0800 (CST)"
+        data-revision="Thu Dec 17 2015 13:58:37 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -294,7 +294,7 @@
                         
                             <b>4.4.5.</b>
                         
-                        限定查询结果
+                        限定查询结果集大小
                     </a>
             
             
@@ -826,7 +826,26 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x9650;&#x5B9A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;">&#x9650;&#x5B9A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;</h1>
+                        <h1 id="&#x9650;&#x5B9A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x96C6;&#x5927;&#x5C0F;">&#x9650;&#x5B9A;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x96C6;&#x5927;&#x5C0F;</h1>
+<p>Spring Data&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;<em>first</em>&#x548C;<em>top</em>&#x5173;&#x952E;&#x5B57;&#x5BF9;&#x8FD4;&#x56DE;&#x7684;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x96C6;&#x5927;&#x5C0F;&#x8FDB;&#x884C;&#x9650;&#x5B9A;&#x3002;fisrt&#x548C;top&#x9700;&#x8981;&#x8DDF;&#x7740;&#x4E00;&#x4E2A;&#x4EE3;&#x8868;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x96C6;&#x7684;&#x6700;&#x5927;&#x5927;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8DDF;&#x7740;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x96C6;&#x5927;&#x5C0F;&#x9ED8;&#x8BA4;&#x4E3A;1&#x3002;</p>
+<p>Example 8.Limiting the result size of query with Top and First(&#x5229;&#x7528;first&#x548C;top&#x9650;&#x5236;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x96C6;&#x5927;&#x5C0F;)</p>
+<pre><code class="lang-java"><span class="hljs-function">User <span class="hljs-title">findFirstByOrderByLastnameAsc</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function">User <span class="hljs-title">findTopByOrderByAgeDesc</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-function">Page&lt;User&gt; <span class="hljs-title">queryFirst10ByLastname</span><span class="hljs-params">(String lastname, Pageable pageable)</span></span>;
+
+<span class="hljs-function">Slice&lt;User&gt; <span class="hljs-title">findTop3ByLastname</span><span class="hljs-params">(String lastname, Pageable pageable)</span></span>;
+
+<span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findFirst10ByLastname</span><span class="hljs-params">(String lastname, Sort sort)</span></span>;
+
+<span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findTop10ByLastname</span><span class="hljs-params">(String lastname, Pageable pageable)</span></span>;
+</code></pre>
+<p>&#x9650;&#x5236;&#x7ED3;&#x679C;&#x96C6;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x8FD8;&#x652F;&#x6301;<em>Distinct</em>&#x5173;&#x952E;&#x5B57;&#x3002;
+&#x5728;&#x67E5;&#x8BE2;&#x7528;page&#x548C;slice&#x6765;&#x8FDB;&#x884C;&#x5206;&#x9875;&#x67E5;&#x8BE2;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<em>first</em>&#x548C;<em>top</em>&#x6765;&#x5BF9;&#x7ED3;&#x679C;&#x96C6;&#x5927;&#x5C0F;&#x8FDB;&#x884C;&#x9650;&#x5236;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x4F7F;&#x7528;<em>Sort</em>&#x53C2;&#x6570;&#x5BF9;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x52A0;&#x4E0A;&#x5BF9;&#x7ED3;&#x679C;&#x96C6;&#x5927;&#x5C0F;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8F7B;&#x6613;&#x7684;&#x83B7;&#x5F97;&#x6700;&#x5927;&#x7684;K&#x4E2A;&#x5143;&#x7D20;&#x6216;&#x6700;&#x5C0F;&#x7684;K&#x4E2A;&#x5143;&#x7D20;&#x3002;</p>
+</blockquote>
 
                     
                     </section>

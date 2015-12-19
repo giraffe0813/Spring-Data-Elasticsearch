@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>网络支持 | README</title>
+        <title>WEB支持 | README</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.5">
@@ -50,10 +50,10 @@
         
     <div class="book"
         data-level="4.7.1"
-        data-chapter-title="网络支持"
+        data-chapter-title="WEB支持"
         data-filepath="4/4.7/4.7.1.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
+        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -477,7 +477,7 @@
                         
                             <b>4.7.1.</b>
                         
-                        网络支持
+                        WEB支持
                     </a>
             
             
@@ -492,22 +492,7 @@
                         
                             <b>4.7.2.</b>
                         
-                        
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7.3" data-path="4/4.7/4.7.3.html">
-            
-                
-                    <a href="../../4/4.7/4.7.3.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.3.</b>
-                        
-                        保留网络支持
+                        Repository填充
                     </a>
             
             
@@ -841,7 +826,193 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="&#x7F51;&#x7EDC;&#x652F;&#x6301;">&#x7F51;&#x7EDC;&#x652F;&#x6301;</h1>
+                        <h1 id="web&#x652F;&#x6301;">WEB&#x652F;&#x6301;</h1>
+<p>Spring Data&#x5E26;&#x6709;&#x5F88;&#x591A;&#x7684;web&#x652F;&#x6301;&#x3002;&#x8981;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#xFF0C;&#x9700;&#x8981;&#x5728;classpath&#x4E2D;&#x52A0;&#x5165;Spring MVC&#x7684;jar&#x5305;&#xFF0C;&#x6709;&#x7684;&#x8FD8;&#x9700;&#x8981;&#x6574;&#x5408;Spring HATEOAS&#x3002;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EA;&#x9700;&#x5728;JavaConfig&#x7684;&#x914D;&#x7F6E;&#x7C7B;&#x4E2D;&#x4F7F;&#x7528;<em>@EnableSpringDataWebSupport</em>&#x6CE8;&#x89E3;&#x5373;&#x53EF;&#x3002;</p>
+<p>Example 24. Enabling Spring Data web support(&#x4F7F;&#x7528;Spring Data&#x7684;web&#x652F;&#x6301;)</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Configuration</span>
+<span class="hljs-annotation">@EnableWebMvc</span>
+<span class="hljs-annotation">@EnableSpringDataWebSupport</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WebConfiguration</span> </span>{ }
+</code></pre>
+<p><em>@EnableSpringDataWebSupport</em>&#x6CE8;&#x89E3;&#x4F1A;&#x6CE8;&#x518C;&#x4E00;&#x4E9B;&#x7EC4;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x4E4B;&#x540E;&#x8BA8;&#x8BBA;&#x3002;&#x5B83;&#x540C;&#x6837;&#x4E5F;&#x4F1A;&#x53BB;&#x68C0;&#x6D4B;classpath&#x4E2D;&#x7684;Spring HATEOAS,&#x5E76;&#x4E14;&#x6CE8;&#x518C;&#x4ED6;&#x4EEC;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x901A;&#x8FC7;JavaConfig&#x5F00;&#x542F;web&#x652F;&#x6301;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;xml&#x914D;&#x7F6E;&#xFF0C;&#x5C06;<em>SpringDataWebSupport</em>&#x548C;<em>HateoasAwareSpringDataWebSupport</em>&#x6CE8;&#x518C;&#x4E3A;Spring&#x7684;bean&#x3002;</p>
+<p>Example 25. Enabling Spring Data web support in XML(&#x4F7F;&#x7528;xml&#x914D;&#x7F6E;)</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">bean</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;org.springframework.data.web.config.SpringDataWebConfiguration&quot;</span> /&gt;</span>
+
+<span class="hljs-comment">&lt;!-- If you&apos;re using Spring HATEOAS as well register this one *instead* of the former --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">bean</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;org.springframework.data.web.config.HateoasAwareSpringDataWebConfiguration&quot;</span> /&gt;</span>
+</code></pre>
+<h4 id="&#x57FA;&#x7840;&#x7684;web&#x652F;&#x6301;">&#x57FA;&#x7840;&#x7684;web&#x652F;&#x6301;</h4>
+<p>&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x4F1A;&#x6CE8;&#x518C;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x7EC4;&#x4EF6;:</p>
+<ul>
+<li><em>DomainClassConverter</em>:&#x4F7F;Spring MVC&#x53EF;&#x4EE5;&#x4ECE;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x6216;&#x8DEF;&#x5F84;&#x53D8;&#x91CF;&#x4E2D;&#x89E3;&#x6790;repository&#x7BA1;&#x7406;&#x7684;&#x57DF;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#x3002;</li>
+<li><em>HandlerMethodArgumentResolver</em>:&#x4F7F;Spring mvc&#x80FD;&#x4ECE;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x6765;&#x89E3;&#x6790;Pageable&#x548C;Sort&#x5B9E;&#x4F8B;</li>
+</ul>
+<h5 id="domainclassconverter">DomainClassConverter</h5>
+<p><em>DomainClassConverter</em> &#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x5728;SpringMVC&#x63A7;&#x5236;&#x5C42;&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x57DF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;(Domain types),&#x800C;&#x65E0;&#x9700;&#x901A;&#x8FC7;repository&#x624B;&#x52A8;&#x67E5;&#x627E;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>Example 26. A Spring MVC controller using domain types in method signatures (&#x5728;Spring MVC&#x63A7;&#x5236;&#x5C42;&#x65B9;&#x6CD5;&#x4E2D;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x57DF;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;)</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Controller</span>
+<span class="hljs-annotation">@RequestMapping</span>(<span class="hljs-string">&quot;/users&quot;</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>{
+
+  <span class="hljs-annotation">@RequestMapping</span>(<span class="hljs-string">&quot;/{id}&quot;</span>)
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">showUserForm</span><span class="hljs-params">(@PathVariable(<span class="hljs-string">&quot;id&quot;</span>)</span> User user, Model model) </span>{
+
+    model.addAttribute(<span class="hljs-string">&quot;user&quot;</span>, user);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;userForm&quot;</span>;
+  }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x76F4;&#x63A5;&#x63A5;&#x6536;&#x4E86;&#x4E00;&#x4E2A;User&#x5BF9;&#x8C61;,&#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x4EFB;&#x4F55;&#x7684;&#x641C;&#x7D22;&#x64CD;&#x4F5C;,&#x8F6C;&#x6362;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x8DEF;&#x5F84;&#x53D8;&#x91CF;id&#x8F6C;&#x4E3A;User&#x5BF9;&#x8C61;&#x7684;id,&#x5E76;&#x4E14;&#x8C03;&#x7528;&#x4E86;findOne()&#x65B9;&#x6CD5;&#x67E5;&#x8BE2;&#x51FA;User&#x5B9E;&#x4F53;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;:&#x5F53;&#x524D;&#x7684;Repository &#x5FC5;&#x987B;&#x5B9E;&#x73B0;CrudRepository</p>
+</blockquote>
+<h5 id="handlermethodargumentresolver">HandlerMethodArgumentResolver</h5>
+<p>&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x540C;&#x65F6;&#x6CE8;&#x518C;&#x4E86;<em>PageableHandlerMethodArgumentResolver</em>&#x548C;<em>SortHandlerMethodArgumentResolver</em>,&#x662F;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x5728;controller&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x4F7F;&#x7528;<em>Pageable</em>&#x548C;<em>Sort</em>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;
+Example 27. Using Pageable as controller method argument&#xFF08;&#x5728;controller&#x4E2D;&#x4F7F;&#x7528;Pageable&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF09;</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Controller</span>
+<span class="hljs-annotation">@RequestMapping</span>(<span class="hljs-string">&quot;/users&quot;</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>{
+
+  <span class="hljs-annotation">@Autowired</span> UserRepository repository;
+
+  <span class="hljs-annotation">@RequestMapping</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">showUsers</span><span class="hljs-params">(Model model, Pageable pageable)</span> </span>{
+
+    model.addAttribute(<span class="hljs-string">&quot;users&quot;</span>, repository.findAll(pageable));
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;users&quot;</span>;
+  }
+}
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#xFF0C;Spring MVC&#x4F1A;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x5C1D;&#x8BD5;&#x4ECE;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x4E2D;&#x5F97;&#x5230;&#x4E00;&#x4E2A;Pageable&#x7684;&#x5B9E;&#x4F8B;&#x3002;
+Table 1. Request parameters evaluated for Pageable instances
+page(&#x7531;&#x4E8E;&#x6784;&#x9020;Pageable&#x5B9E;&#x4F8B;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x53C2;&#x6570;&#x540D;</th>
+<th style="text-align:left">&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">page</td>
+<td style="text-align:left">&#x60F3;&#x8981;&#x83B7;&#x53D6;&#x7684;&#x9875;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;0</td>
+</tr>
+<tr>
+<td style="text-align:left">size</td>
+<td style="text-align:left">&#x83B7;&#x53D6;&#x9875;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;20</td>
+</tr>
+<tr>
+<td style="text-align:left">sort</td>
+<td style="text-align:left">&#x9700;&#x8981;&#x6392;&#x5E8F;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;<em>property,property(,ASC/DESC)</em>,&#x9ED8;&#x8BA4;&#x5347;&#x5E8F;&#x6392;&#x5E8F;&#x3002;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#x6392;&#x5E8F;&#xFF0C;&#x6BD4;&#x5982;<em>?sort=firstname&amp;sort=lastname,asc</em></td>
+</tr>
+</tbody>
+</table>
+<p>&#x5982;&#x679C;&#x5F00;&#x53D1;&#x8005;&#x60F3;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x9875;&#x6216;&#x6392;&#x5E8F;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;<em>SpringDataWebConfiguration</em>&#x6216;<em>HATEOAS-enabled</em>&#xFF0C;&#x5E76;&#x91CD;&#x5199;<em>pageableResolver()</em>&#x6216;<em>sortResolver()</em>&#x65B9;&#x6CD5;&#xFF0C;&#x5F15;&#x5165;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6765;&#x4EE3;&#x66FF;&#x4F7F;&#x7528;@Enable-&#x6CE8;&#x89E3;&#x3002;</p>
+<p>&#x5F00;&#x53D1;&#x8005;&#x4E5F;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x591A;&#x4E2A;&#x8868;&#x5B9A;&#x4E49;&#x591A;&#x4E2A;<em>Pageable</em>&#x6216;<em>Sort</em>&#x5B9E;&#x4F8B;,&#x9700;&#x8981;&#x4F7F;&#x7528;Spring&#x7684;<em>@Qualifier</em>&#x6CE8;&#x89E3;&#x6765;&#x533A;&#x5206;&#x5B83;&#x4EEC;&#x3002;&#x5E76;&#x4E14;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x540D;&#x8981;&#x5E26;&#x6709;<em>${qualifier}_</em>&#x7684;&#x524D;&#x7F00;&#x3002;&#x4F8B;&#x5B50;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">showUsers</span><span class="hljs-params">(Model model,
+      @Qualifier(<span class="hljs-string">&quot;foo&quot;</span>)</span> Pageable first,
+      @<span class="hljs-title">Qualifier</span><span class="hljs-params">(<span class="hljs-string">&quot;bar&quot;</span>)</span> Pageable second) </span>{...}
+</code></pre>
+<p>&#x8BF7;&#x6C42;&#x4E2D;&#x9700;&#x8981;&#x5E26;&#x6709;foo_page&#x548C;bar_page&#x7B49;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x7684;<em>Pageable</em>&#x76F8;&#x5F53;&#x4E8E;<em>new PageRequest(0, 20)</em>&#xFF0C;&#x4F46;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x5728;<em>Pageable</em>&#x53C2;&#x6570;&#x4E0A;&#x4F7F;&#x7528;<em>@PageableDefaults</em>&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x3002;</p>
+<h5 id="&#x8D85;&#x5A92;&#x4F53;&#x5206;&#x9875;">&#x8D85;&#x5A92;&#x4F53;&#x5206;&#x9875;</h5>
+<p>Spring HATEOAS&#x6709;&#x4E00;&#x4E2A;PagedResources&#x7C7B;,&#x5B83;&#x4E30;&#x5BCC;&#x4E86;Page&#x5B9E;&#x4F53;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x8BA9;&#x7528;&#x6237;&#x66F4;&#x5BB9;&#x6613;&#x5BFC;&#x822A;&#x5230;&#x8D44;&#x6E90;&#x7684;&#x94FE;&#x63A5;&#x3002;Page&#x8F6C;&#x6362;&#x5230;PagedResources&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E86;Spring HATEOAS ResourceAssembler&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;:PagedResourcesAssembler&#x63D0;&#x4F9B;&#x8F6C;&#x6362;&#x7684;&#x3002;
+Example 28. Using a PagedResourcesAssembler as controller method argument(&#x4F7F;&#x7528;PagedResourcesAssembler&#x5F53;&#x505A;&#x65B9;&#x6CD5;&#x53C2;&#x6570;)</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Controller</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonController</span> </span>{
+
+  <span class="hljs-annotation">@Autowired</span> PersonRepository repository;
+
+  <span class="hljs-annotation">@RequestMapping</span>(value = <span class="hljs-string">&quot;/persons&quot;</span>, method = RequestMethod.GET)
+  HttpEntity&lt;PagedResources&lt;Person&gt;&gt; persons(Pageable pageable,
+    PagedResourcesAssembler assembler) {
+
+    Page&lt;Person&gt; persons = repository.findAll(pageable);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ResponseEntity&lt;&gt;(assembler.toResources(persons), HttpStatus.OK);
+  }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;toResources&#x65B9;&#x6CD5;&#x4F1A;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x7684;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;:</p>
+<ul>
+<li>Page&#x5BF9;&#x8C61;&#x7684;content&#x4F1A;&#x8F6C;&#x6362;&#x6210;&#x4E3A;PagedResources&#x5BF9;&#x8C61;&#x7684;content&#x3002;</li>
+<li>PagedResources&#x4F1A;&#x7684;&#x5230;&#x4E00;&#x4E2A;PageMetadata&#x7684;&#x5B9E;&#x4F53;,&#x5305;&#x542B;&#x4ECE;Page&#x8DDF;PageRequest&#x5F97;&#x5230;&#x7684;&#x4FE1;&#x606F;&#x3002; </li>
+<li>PagedResources&#x4F1A;&#x6839;&#x636E;&#x72B6;&#x6001;&#x5F97;&#x5230;prev&#x8DDF;next&#x94FE;&#x63A5;,&#x8FD9;&#x4E9B;&#x94FE;&#x63A5;&#x6307;&#x5411;URI&#x6240;&#x5339;&#x914D;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5206;&#x9875;&#x53C2;&#x6570;&#x4F1A;&#x6839;&#x636E;PageableHandlerMethodArgumentResolver&#x914D;&#x7F6E;,&#x4EE5;&#x8BA9;&#x5176;&#x80FD;&#x591F;&#x5728;&#x540E;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x4E2D;&#x89E3;&#x6790;&#x4F7F;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5B58;&#x6709;30&#x4E2A;&#x4EBA;&#x3002;&#x53D1;&#x9001;&#x4E00;&#x4E2A;GET&#x8BF7;&#x6C42;<em><a href="http://localhost:8080/persons" target="_blank">http://localhost:8080/persons</a></em>,&#x5F97;&#x5230;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-json">{ &quot;links&quot; : [ { &quot;rel&quot; : &quot;next&quot;,
+                &quot;href&quot; : &quot;http://localhost:8080/persons?page=1&amp;size=20 }
+  ],
+  &quot;content&quot; : [
+     &#x2026; // 20 Person instances rendered here
+  ],
+  &quot;pageMetadata&quot; : {
+    &quot;size&quot; : 20,
+    &quot;totalElements&quot; : 30,
+    &quot;totalPages&quot; : 2,
+    &quot;number&quot; : 0
+  }
+}
+</code></pre>
+<p>&#x4ECE;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;assembler&#x751F;&#x6210;&#x4E86;&#x6B63;&#x786E;&#x7684;URI&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x8BBE;&#x7F6E;&#x4E86;&#x5206;&#x9875;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x66F4;&#x6539;&#x4E86;&#x914D;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E2A;&#x94FE;&#x63A5;&#x4F1A;&#x81EA;&#x52A8;&#x66F4;&#x6539;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;assembler&#x751F;&#x6210;&#x7684;&#x94FE;&#x63A5;&#x4F1A;&#x6307;&#x5411;&#x88AB;&#x8C03;&#x7528;&#x7684;controller&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CD;&#x5199;<em>PageResourceAssembler.toResource{...}</em>&#x65B9;&#x6CD5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x94FE;&#x63A5;&#x3002;</p>
+<h5 id="querydsl-web&#x652F;&#x6301;">QueryDSL web&#x652F;&#x6301;</h5>
+<p>&#x5BF9;&#x4E8E;&#x90A3;&#x4E9B;&#x96C6;&#x6210;&#x4E86;<a href="http://www.querydsl.com/" target="_blank">QueryDSL</a>&#x7684;&#x5B58;&#x50A8;&#x53EF;&#x4EE5;&#x4ECE;&#x8BF7;&#x6C42;&#x7684;&#x67E5;&#x8BE2;&#x53C2;&#x6570;&#x4E2D;&#x76F4;&#x63A5;&#x83B7;&#x5F97;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x3002;
+&#x8FD9;&#x610F;&#x5473;&#x7740;&#x4E0B;&#x9762;&#x7684;&#x9488;&#x5BF9;<em>User</em>&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;:</p>
+<pre><code>?firstname=Dave&amp;lastname=Matthews
+</code></pre><p>&#x4F1A;&#x901A;&#x8FC7;<em>QuerydslPredicateArgumentResolver</em>&#x89E3;&#x6790;&#x6210;:</p>
+<pre><code class="lang-java">QUser.user.firstname.eq(<span class="hljs-string">&quot;Dave&quot;</span>).and(QUser.user.lastname.eq(<span class="hljs-string">&quot;Matthews&quot;</span>))
+</code></pre>
+<blockquote>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E86;@EnableSpringDataWebSupport&#x6CE8;&#x89E3;&#xFF0C;&#x5E76;&#x4E14;classpath&#x4E2D;&#x5305;&#x542B;Querydsl&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x529F;&#x80FD;&#x4F1A;&#x81EA;&#x52A8;&#x5F00;&#x542F;&#x3002;</p>
+</blockquote>
+<p>&#x5728;&#x65B9;&#x6CD5;&#x4E2D;&#x52A0;&#x5165;<em>@QuerydslPredicate</em>&#x6CE8;&#x89E3;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x6211;&#x4EEC;&#x4F7F;&#x7528;<em>Predicate</em></p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Controller</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>{
+
+  <span class="hljs-annotation">@Autowired</span> UserRepository repository;
+
+  <span class="hljs-annotation">@RequestMapping</span>(value = <span class="hljs-string">&quot;/&quot;</span>, method = RequestMethod.GET)
+  <span class="hljs-function">String <span class="hljs-title">index</span><span class="hljs-params">(Model model, @QuerydslPredicate(root = User.class)</span> Predicate predicate,     <span class="hljs-comment">//1</span>
+          Pageable pageable, @RequestParam MultiValueMap&lt;String, String&gt; parameters) </span>{
+
+    model.addAttribute(<span class="hljs-string">&quot;users&quot;</span>, repository.findAll(predicate, pageable));
+
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;index&quot;</span>;
+  }
+}
+<span class="hljs-number">1</span>.&#x89E3;&#x6790;&#x67E5;&#x8BE2;&#x53C2;&#x6570;&#x6765;&#x5339;&#x914D;&#x9488;&#x5BF9;user&#x7684;Predicate
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x7ED1;&#x5B9A;&#x5982;&#x4E0B;:</p>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5C5E;&#x6027;&#x76F8;&#x5F53;&#x4E8E;<em>eq</em><pre><code>?firstname=2
+</code></pre></li>
+<li>&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#x4E0A;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x76F8;&#x5F53;&#x4E8E;<em>contains</em><pre><code>?firstname=2&amp;firstname=3
+</code></pre></li>
+<li>&#x7B80;&#x5355;&#x5C5E;&#x6027;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x76F8;&#x5F53;&#x4E8E;<em>in</em><pre><code>?firstname=[2,3,4,5]
+</code></pre></li>
+</ul>
+<p>&#x8FD9;&#x4E9B;&#x7ED1;&#x5B9A;&#x89C4;&#x5219;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<em>@QuerydslPredicate</em>&#x7684;<em>bindings</em>&#x5C5E;&#x6027;&#x6216;&#x8005;&#x4F7F;&#x7528;Java 8&#x65B0;&#x5F15;&#x5165;&#x7684;<em>default</em>&#x65B9;&#x6CD5;&#x5728;repository&#x63A5;&#x53E3;&#x4E2D;&#x52A0;&#x5165;<em>QuerydslBinderCustomizer</em>&#x65B9;&#x6CD5;&#x6765;&#x66F4;&#x6539;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">CrudRepository</span>&lt;<span class="hljs-title">User</span>, <span class="hljs-title">String</span>&gt;,
+                                 <span class="hljs-title">QueryDslPredicateExecutor</span>&lt;<span class="hljs-title">User</span>&gt;,       //1         
+                                  <span class="hljs-title">QuerydslBinderCustomizer</span>&lt;<span class="hljs-title">QUser</span>&gt; </span>{      <span class="hljs-comment">//2              </span>
+
+  <span class="hljs-annotation">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">customize</span><span class="hljs-params">(QuerydslBindings bindings, QUser user)</span> </span>{
+
+    bindings.bind(user.username).first&#xFF08;(path, value) -&gt; path.contains(value))          <span class="hljs-comment">//3</span>
+    bindings.bind(String.class)
+      .first((StringPath path, String value) -&gt; path.containsIgnoreCase(value));        <span class="hljs-comment">//4 </span>
+    bindings.excluding(user.password);  <span class="hljs-comment">//5                                         </span>
+  }
+}
+
+<span class="hljs-number">1</span>.QueryDslPredicateExecutor provides access to specific finder methods <span class="hljs-keyword">for</span> Predicate.
+<span class="hljs-number">2</span>.QuerydslBinderCustomizer defined on the repository <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">will</span> <span class="hljs-title">be</span> <span class="hljs-title">automatically</span> <span class="hljs-title">picked</span> <span class="hljs-title">up</span> <span class="hljs-title">and</span> <span class="hljs-title">shortcuts</span> @<span class="hljs-title">QuerydslPredicate</span>(<span class="hljs-title">bindings</span></span>=&#x2026;&#x200B;).
+<span class="hljs-number">3</span>.Define the binding <span class="hljs-keyword">for</span> the username property to be a simple contains binding.
+<span class="hljs-number">4</span>.Define the <span class="hljs-keyword">default</span> binding <span class="hljs-keyword">for</span> String properties to be a <span class="hljs-keyword">case</span> insensitive contains match.
+<span class="hljs-number">5</span>.Exclude the password property from Predicate resolution.
+</code></pre>
 
                     
                     </section>
@@ -855,7 +1026,7 @@
         <a href="../../4/4.7.html" class="navigation navigation-prev " aria-label="Previous page: 扩展Spring Data"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../4/4.7/4.7.2.html" class="navigation navigation-next " aria-label="Next page: "><i class="fa fa-angle-right"></i></a>
+        <a href="../../4/4.7/4.7.2.html" class="navigation navigation-next " aria-label="Next page: Repository填充"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

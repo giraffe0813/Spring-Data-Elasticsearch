@@ -53,7 +53,7 @@
         data-chapter-title="创建查询"
         data-filepath="5/5.2/5.2.2.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
+        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -477,7 +477,7 @@
                         
                             <b>4.7.1.</b>
                         
-                        网络支持
+                        WEB支持
                     </a>
             
             
@@ -492,22 +492,7 @@
                         
                             <b>4.7.2.</b>
                         
-                        
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7.3" data-path="4/4.7/4.7.3.html">
-            
-                
-                    <a href="../../4/4.7/4.7.3.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.3.</b>
-                        
-                        保留网络支持
+                        Repository填充
                     </a>
             
             
@@ -842,6 +827,126 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x521B;&#x5EFA;&#x67E5;&#x8BE2;">&#x521B;&#x5EFA;&#x67E5;&#x8BE2;</h1>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;,Elasticsearch&#x6A21;&#x5757;&#x521B;&#x5EFA;&#x67E5;&#x8BE2;&#x7684;&#x673A;&#x5236;&#x4E0E;4.2&#x8282;<a href="../../4/4.2.html">&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;</a>&#x4E2D;&#x63CF;&#x8FF0;&#x7684;&#x4E00;&#x6837;&#x3002;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;Elasticsearch&#x6A21;&#x5757;&#x4F1A;&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#x751F;&#x6210;&#x600E;&#x6837;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x3002;</p>
+<p>Example 37. Query creation from method names&#xFF08;&#x901A;&#x8FC7;&#x65B9;&#x6CD5;&#x540D;&#x521B;&#x5EFA;&#x67E5;&#x8BE2;&#xFF09;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">BookRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Repository</span>&lt;<span class="hljs-title">Book</span>, <span class="hljs-title">String</span>&gt;
+</span>{
+    <span class="hljs-function">List&lt;Book&gt; <span class="hljs-title">findByNameAndPrice</span><span class="hljs-params">(String name, Integer price)</span></span>;
+}
+</code></pre>
+<p>&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x540D;&#x4F1A;&#x751F;&#x6210;&#x4E0B;&#x9762;&#x7684;Elasticsearch&#x67E5;&#x8BE2;&#x8BED;&#x53E5;</p>
+<pre><code class="lang-json">{ <span class="hljs-string">&quot;bool&quot;</span> :
+    { <span class="hljs-string">&quot;must&quot;</span> :
+        [
+            { <span class="hljs-string">&quot;field&quot;</span> : {<span class="hljs-string">&quot;name&quot;</span> : <span class="hljs-string">&quot;?&quot;</span>} },
+            { <span class="hljs-string">&quot;field&quot;</span> : {<span class="hljs-string">&quot;price&quot;</span> : <span class="hljs-string">&quot;?&quot;</span>} }
+        ]
+    }
+}
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x7684;&#x8868;&#x683C;&#x5217;&#x51FA;&#x4E86;&#x6240;&#x6709;Elasticsearch&#x652F;&#x6301;&#x7684;&#x5173;&#x952E;&#x5B57;&#x3002;</p>
+<p>Table 2. Supported keywords inside method names&#xFF08;&#x65B9;&#x6CD5;&#x540D;&#x4E2D;&#x652F;&#x6301;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF09;    </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5173;&#x952E;&#x5B57;</th>
+<th style="text-align:left">&#x4F8B;&#x5B50;</th>
+<th style="text-align:left">Elasticsearch&#x67E5;&#x8BE2;&#x8BED;&#x53E5;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">And</td>
+<td style="text-align:left">findByNameAndPrice</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : [ {&quot;field&quot; : {&quot;name&quot; : &quot;?&quot;}}, {&quot;field&quot; : {&quot;price&quot; : &quot;?&quot;}} ]}}</td>
+</tr>
+<tr>
+<td style="text-align:left">Or</td>
+<td style="text-align:left">findByNameOrPrice</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;should&quot; : [ {&quot;field&quot; : {&quot;name&quot; : &quot;?&quot;}}, {&quot;field&quot; : {&quot;price&quot; : &quot;?&quot;}} ]}}</td>
+</tr>
+<tr>
+<td style="text-align:left">Is</td>
+<td style="text-align:left">findByName</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;name&quot; : &quot;?&quot;}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">Not</td>
+<td style="text-align:left">findByNameNot</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must_not&quot; : {&quot;field&quot; : {&quot;name&quot; : &quot;?&quot;}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">LessThanEqual</td>
+<td style="text-align:left">findByPriceLessThan</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;range&quot; : {&quot;price&quot; : {&quot;from&quot; : null,&quot;to&quot; : ?,&quot;include_lower&quot; : true,&quot;include_upper&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">GreaterThanEqual</td>
+<td style="text-align:left">findByPriceGreaterThan</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;range&quot; : {&quot;price&quot; : {&quot;from&quot; : ?,&quot;to&quot; : null,&quot;include_lower&quot; : true,&quot;include_upper&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">Before</td>
+<td style="text-align:left">findByPriceBefore</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;range&quot; : {&quot;price&quot; : {&quot;from&quot; : null,&quot;to&quot; : ?,&quot;include_lower&quot; : true,&quot;include_upper&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">After</td>
+<td style="text-align:left">findByPriceAfter</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;range&quot; : {&quot;price&quot; : {&quot;from&quot; : ?,&quot;to&quot; : null,&quot;include_lower&quot; : true,&quot;include_upper&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">Like</td>
+<td style="text-align:left">findByNameLike</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;name&quot; : {&quot;query&quot; : &quot;?*&quot;,&quot;analyze_wildcard&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">StartingWith</td>
+<td style="text-align:left">findByNameStartingWith</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;name&quot; : {&quot;query&quot; : &quot;?*&quot;,&quot;analyze_wildcard&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">EndingWith</td>
+<td style="text-align:left">findByNameEndingWith</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;name&quot; : {&quot;query&quot; : &quot;*?&quot;,&quot;analyze_wildcard&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">Contains/Containing</td>
+<td style="text-align:left">findByNameContaining</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;name&quot; : {&quot;query&quot; : &quot;?&quot;,&quot;analyze_wildcard&quot; : true}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">In</td>
+<td style="text-align:left">findByNameIn(Collection<String>names)</String></td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;bool&quot; : {&quot;should&quot; : [ {&quot;field&quot; : {&quot;name&quot; : &quot;?&quot;}}, {&quot;field&quot; : {&quot;name&quot; : &quot;?&quot;}} ]}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">NotIn</td>
+<td style="text-align:left">findByNameNotIn(Collection<String>names)</String></td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must_not&quot; : {&quot;bool&quot; : {&quot;should&quot; : {&quot;field&quot; : {&quot;name&quot; : &quot;?&quot;}}}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">Near</td>
+<td style="text-align:left">findByStoreNear</td>
+<td style="text-align:left">&#x6682;&#x4E0D;&#x652F;&#x6301;</td>
+</tr>
+<tr>
+<td style="text-align:left">True</td>
+<td style="text-align:left">findByAvailableTrue</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;available&quot; : true}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">False</td>
+<td style="text-align:left">findByAvailableFalse</td>
+<td style="text-align:left">{&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;available&quot; : false}}}}</td>
+</tr>
+<tr>
+<td style="text-align:left">OrderBy</td>
+<td style="text-align:left">findByAvailableTrueOrderByNameDesc</td>
+</tr>
+</tbody>
+</table>
+<p>{&quot;sort&quot; : [{ &quot;name&quot; : {&quot;order&quot; : &quot;desc&quot;} }],&quot;bool&quot; : {&quot;must&quot; : {&quot;field&quot; : {&quot;available&quot; : true}}}}</p>
 
                     
                     </section>

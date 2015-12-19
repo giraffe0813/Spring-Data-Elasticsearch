@@ -53,7 +53,7 @@
         data-chapter-title="基于注解的配置"
         data-filepath="5/5.1/5.1.2.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
+        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -477,7 +477,7 @@
                         
                             <b>4.7.1.</b>
                         
-                        网络支持
+                        WEB支持
                     </a>
             
             
@@ -492,22 +492,7 @@
                         
                             <b>4.7.2.</b>
                         
-                        
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7.3" data-path="4/4.7/4.7.3.html">
-            
-                
-                    <a href="../../4/4.7/4.7.3.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.3.</b>
-                        
-                        保留网络支持
+                        Repository填充
                     </a>
             
             
@@ -842,6 +827,19 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x57FA;&#x4E8E;&#x6CE8;&#x89E3;&#x7684;&#x914D;&#x7F6E;">&#x57FA;&#x4E8E;&#x6CE8;&#x89E3;&#x7684;&#x914D;&#x7F6E;</h1>
+<p>Spring Data Elasticsearch repository&#x53EF;&#x4EE5;&#x901A;&#x8FC7;XML&#x914D;&#x7F6E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;JavaConfig&#x7684;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;&#x3002;</p>
+<p>Example 35. Spring Data Elasticsearch repositories using JavaConfig(&#x4F7F;&#x7528;JavaConfig)</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Configuration</span>
+<span class="hljs-annotation">@EnableElasticsearchRepositories</span>(basePackages = <span class="hljs-string">&quot;org/springframework/data/elasticsearch/repositories&quot;</span>)
+<span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Config</span> </span>{
+
+    <span class="hljs-annotation">@Bean</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ElasticsearchOperations <span class="hljs-title">elasticsearchTemplate</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ElasticsearchTemplate(nodeBuilder().local(<span class="hljs-keyword">true</span>).node().client());
+    }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x4F7F;&#x7528;<em>ElasticsearchTemplate</em>&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;<em>Embedded Elasticsearch Server</em>&#x3002;&#x901A;&#x8FC7;<em>@EnableElasticsearchRepositories</em>&#x6CE8;&#x89E3;&#x6765;&#x542F;&#x52A8;Spring Data Elasticsearch Repositories&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x626B;&#x63CF;&#x7684;&#x5305;&#x8DEF;&#x5F84;&#xFF0C;&#x4F1A;&#x626B;&#x63CF;&#x914D;&#x7F6E;&#x7C7B;&#x6240;&#x5728;&#x7684;&#x5305;&#x3002;</p>
 
                     
                     </section>

@@ -53,7 +53,7 @@
         data-chapter-title="Spring命名空间"
         data-filepath="5/5.1/5.1.1.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
+        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -477,7 +477,7 @@
                         
                             <b>4.7.1.</b>
                         
-                        网络支持
+                        WEB支持
                     </a>
             
             
@@ -492,22 +492,7 @@
                         
                             <b>4.7.2.</b>
                         
-                        
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7.3" data-path="4/4.7/4.7.3.html">
-            
-                
-                    <a href="../../4/4.7/4.7.3.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.3.</b>
-                        
-                        保留网络支持
+                        Repository填充
                     </a>
             
             
@@ -842,6 +827,51 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="spring&#x547D;&#x540D;&#x7A7A;&#x95F4;">Spring&#x547D;&#x540D;&#x7A7A;&#x95F4;</h1>
+<p>Spring Data Elasticsearch&#x6A21;&#x5757;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;repository bean&#x548C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;<em>ElasticsearchServer</em>&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x50CF;<a href="http://" target="_blank">&#x521B;&#x5EFA;Repository&#x5B9E;&#x4F8B;</a>&#x4E2D;&#x63CF;&#x8FF0;&#x7684;&#x90A3;&#x6837;&#x4F7F;&#x7528;<em>repositories</em>&#x5143;&#x7D20;&#x67E5;&#x627E;Spring Data repository&#x3002;</p>
+<p>Example 32. Setting up Elasticsearch repositories using Namespace(&#x4F7F;&#x7528;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x521B;&#x5EFA;Elasticsearch repositories)</p>
+<pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">beans</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/beans&quot;</span>
+<span class="hljs-attribute">xmlns:xsi</span>=<span class="hljs-value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="hljs-attribute">xmlns:elasticsearch</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/data/elasticsearch&quot;</span>
+<span class="hljs-attribute">xsi:schemaLocation</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.springframework.org/schema/data/elasticsearch
+http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.0.xsd&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">elasticsearch:repositories</span> <span class="hljs-attribute">base-package</span>=<span class="hljs-value">&quot;com.acme.repositories&quot;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">beans</span>&gt;</span>
+</code></pre>
+<p>&#x4F7F;&#x7528;<em>Transport Client</em>&#x548C;<em>Node Client</em>&#x5143;&#x7D20;&#x6CE8;&#x518C;&#x4E00;&#x4E2A;<em>Elasticsearch Server</em>&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>Example 33. Transport Client using Namespace(&#x4F7F;&#x7528;Transport Client)</p>
+<pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">beans</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/beans&quot;</span>
+<span class="hljs-attribute">xmlns:xsi</span>=<span class="hljs-value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="hljs-attribute">xmlns:elasticsearch</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/data/elasticsearch&quot;</span>
+<span class="hljs-attribute">xsi:schemaLocation</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.springframework.org/schema/data/elasticsearch
+http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.0.xsd&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">elasticsearch:transport-client</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;client&quot;</span> <span class="hljs-attribute">cluster-nodes</span>=<span class="hljs-value">&quot;localhost:9300,someip:9300&quot;</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">beans</span>&gt;</span>
+</code></pre>
+<p>Example 34. Node Client using Namespace(&#x4F7F;&#x7528;Node Client)</p>
+<pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">beans</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/beans&quot;</span>
+<span class="hljs-attribute">xmlns:xsi</span>=<span class="hljs-value">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="hljs-attribute">xmlns:elasticsearch</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/data/elasticsearch&quot;</span>
+<span class="hljs-attribute">xsi:schemaLocation</span>=<span class="hljs-value">&quot;http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.springframework.org/schema/data/elasticsearch
+http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.0.xsd&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">elasticsearch:node-client</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;client&quot;</span> <span class="hljs-attribute">local</span>=<span class="hljs-value">&quot;true&quot;</span><span class="hljs-value">&quot; /&gt;
+
+&lt;/beans&gt;
+</span></span></code></pre>
 
                     
                     </section>

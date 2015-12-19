@@ -53,7 +53,7 @@
         data-chapter-title="使用@Query注解"
         data-filepath="5/5.2/5.2.3.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
+        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -477,7 +477,7 @@
                         
                             <b>4.7.1.</b>
                         
-                        网络支持
+                        WEB支持
                     </a>
             
             
@@ -492,22 +492,7 @@
                         
                             <b>4.7.2.</b>
                         
-                        
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7.3" data-path="4/4.7/4.7.3.html">
-            
-                
-                    <a href="../../4/4.7/4.7.3.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.3.</b>
-                        
-                        保留网络支持
+                        Repository填充
                     </a>
             
             
@@ -842,6 +827,12 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x4F7F;&#x7528;query&#x6CE8;&#x89E3;">&#x4F7F;&#x7528;@Query&#x6CE8;&#x89E3;</h1>
+<p>Example 38. Declare query at the method using the @Query annotation.(&#x4F7F;&#x7528;@Query&#x6CE8;&#x89E3;&#x58F0;&#x660E;&#x67E5;&#x8BE2;)</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">BookRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ElasticsearchRepository</span>&lt;<span class="hljs-title">Book</span>, <span class="hljs-title">String</span>&gt; </span>{
+    <span class="hljs-annotation">@Query</span>(<span class="hljs-string">&quot;{&quot;</span>bool<span class="hljs-string">&quot; : {&quot;</span>must<span class="hljs-string">&quot; : {&quot;</span>field<span class="hljs-string">&quot; : {&quot;</span>name<span class="hljs-string">&quot; : &quot;</span>?<span class="hljs-number">0</span><span class="hljs-string">&quot;}}}}&quot;</span>)
+    <span class="hljs-function">Page&lt;Book&gt; <span class="hljs-title">findByName</span><span class="hljs-params">(String name,Pageable pageable)</span></span>;
+}
+</code></pre>
 
                     
                     </section>

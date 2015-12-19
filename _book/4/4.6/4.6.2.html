@@ -53,7 +53,7 @@
         data-chapter-title="为所有的repositories添加自定义方法"
         data-filepath="4/4.6/4.6.2.md"
         data-basepath="../.."
-        data-revision="Thu Dec 17 2015 20:10:05 GMT+0800 (CST)"
+        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -477,7 +477,7 @@
                         
                             <b>4.7.1.</b>
                         
-                        网络支持
+                        WEB支持
                     </a>
             
             
@@ -492,22 +492,7 @@
                         
                             <b>4.7.2.</b>
                         
-                        
-                    </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="4.7.3" data-path="4/4.7/4.7.3.html">
-            
-                
-                    <a href="../../4/4.7/4.7.3.html">
-                
-                        <i class="fa fa-check"></i>
-                        
-                            <b>4.7.3.</b>
-                        
-                        保留网络支持
+                        Repository填充
                     </a>
             
             
@@ -842,6 +827,46 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x4E3A;&#x6240;&#x6709;&#x7684;repositories&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;">&#x4E3A;&#x6240;&#x6709;&#x7684;repositories&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;</h1>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x7ED9;&#x4E3A;&#x6240;&#x6709;&#x7684;repository&#x63A5;&#x53E3;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x4E48;&#x4E4B;&#x524D;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x53EF;&#x884C;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x7ED9;&#x6240;&#x6709;&#x7684;repository&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x9996;&#x5148;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x8FC7;&#x6E21;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+<p>Example 20. An interface declaring custom shared behavior(&#x5B9A;&#x4E49;&#x4E2D;&#x95F4;&#x63A5;&#x53E3;&#x58F0;&#x660E;)</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@NoRepositoryBean</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">MyRepository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Serializable</span>&gt;
+  <span class="hljs-keyword">extends</span> <span class="hljs-title">PagingAndSortingRepository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span>&gt; </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sharedCustomMethod</span><span class="hljs-params">(ID id)</span></span>;
+}
+</code></pre>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x5176;&#x4ED6;repository&#x63A5;&#x53E3;&#x9700;&#x8981;&#x7EE7;&#x627F;&#x5B9A;&#x4E49;&#x7684;&#x4E2D;&#x95F4;&#x63A5;&#x53E3;&#x800C;&#x4E0D;&#x662F;&#x7EE7;&#x627F;<em>Repository</em>&#x63A5;&#x53E3;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x9700;&#x8981;&#x4E3A;&#x8FD9;&#x4E2A;&#x4E2D;&#x95F4;&#x63A5;&#x53E3;&#x521B;&#x5EFA;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;&#x8FD9;&#x4E2A;&#x5B9E;&#x73B0;&#x7C7B;&#x662F;&#x57FA;&#x4E8E;Repository&#x4E2D;&#x7684;&#x57FA;&#x7C7B;&#x7684;(&#x4E0D;&#x540C;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5B58;&#x50A8;&#x7EE7;&#x627F;&#x7684;&#x57FA;&#x7C7B;&#x4E5F;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5;Jpa&#x4E3A;&#x4F8B;)&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x4F1A;&#x88AB;&#x5F53;&#x505A;repository&#x4EE3;&#x7406;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x6765;&#x6267;&#x884C;&#x3002;
+Example 21. Custom repository base class(&#x81EA;&#x5B9A;&#x4E49;reposotory&#x57FA;&#x7C7B;)</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRepositoryImpl</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Serializable</span>&gt;
+  <span class="hljs-keyword">extends</span> <span class="hljs-title">SimpleJpaRepository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">MyRepository</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">ID</span>&gt; </span>{
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> EntityManager entityManager;
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyRepositoryImpl</span><span class="hljs-params">(JpaEntityInformation entityInformation,EntityManager entityManager)</span> </span>{
+    <span class="hljs-keyword">super</span>(entityInformation, entityManager);
+
+    <span class="hljs-comment">// Keep the EntityManager around to used from the newly introduced methods.</span>
+    <span class="hljs-keyword">this</span>.entityManager = entityManager;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sharedCustomMethod</span><span class="hljs-params">(ID id)</span> </span>{
+    <span class="hljs-comment">// implementation goes here</span>
+  }
+}
+</code></pre>
+<p>Spring&#x4E2D;<repository>&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x9ED8;&#x8BA4;&#x4F1A;&#x4E3A;base-package&#x4E0B;&#x6240;&#x6709;&#x7684;&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x4F46;MyRepository&#x53EA;&#x662F;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x5B9E;&#x4F8B;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;@NoRepositoryBean&#x6CE8;&#x89E3;&#x6216;&#x5C06;&#x5176;&#x6392;&#x9664;&#x5728;base-package&#x7684;&#x914D;&#x7F6E;&#x4E2D;</repository></p>
+<p>&#x6700;&#x540E;&#x4E00;&#x6B65;&#x662F;&#x4F7F;&#x7528;JavaConfig&#x6216;Xml&#x914D;&#x7F6E;&#x8FD9;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;repository&#x57FA;&#x7C7B;&#x3002;</p>
+<p>Example 22. Configuring a custom repository base class using JavaConfig(&#x4F7F;&#x7528;JavaConfig&#x914D;&#x7F6E;repository&#x57FA;&#x7C7B;)</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Configuration</span>
+<span class="hljs-annotation">@EnableJpaRepositories</span>(repositoryBaseClass = MyRepositoryImpl.class)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApplicationConfiguration</span> </span>{ &#x2026; }
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4F7F;&#x7528;Xml&#x7684;&#x65B9;&#x5F0F;&#x914D;&#x7F6E;&#x3002;</p>
+<p>Example 23. Configuring a custom repository base class using XML(&#x4F7F;&#x7528;xml&#x914D;&#x7F6E;&#x81EA;&#x5B9A;&#x4E49;repository&#x57FA;&#x7C7B;)</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">repositories</span> <span class="hljs-attribute">base-package</span>=<span class="hljs-value">&quot;com.acme.repository&quot;</span>
+     <span class="hljs-attribute">repository-base-class</span>=<span class="hljs-value">&quot;&#x2026;.MyRepositoryImpl&quot;</span> /&gt;</span>
+</code></pre>
 
                     
                     </section>

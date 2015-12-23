@@ -4,5 +4,6 @@
         "disqus": {
             "shortName": "spring-data-elasticsearch"
         }
-    }  
+    },
+    "language": "zh-hans" 
 }

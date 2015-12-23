@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="zh-hans" >
     
     <head>
         
@@ -19,6 +19,10 @@
         <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
         
     <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
     
         
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
@@ -53,7 +57,7 @@
         data-chapter-title="利用Scan和Scroll处理大结果集"
         data-filepath="5/5.3/5.3.2.md"
         data-basepath="../.."
-        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
+        data-revision="Wed Dec 23 2015 18:55:59 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -76,7 +80,7 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Introduction
+                        介绍
                     </a>
             
             
@@ -737,7 +741,7 @@
                         
                             <b>6.1.</b>
                         
-                        附录A 命名空间参考
+                        附录A 命名空间参考文档
                     </a>
             
             
@@ -752,7 +756,7 @@
                         
                             <b>6.2.</b>
                         
-                        附录B 填充命名空间参考
+                        附录B Populators命名空间参考文档
                     </a>
             
             
@@ -799,7 +803,7 @@
             <li class="divider"></li>
             <li>
                 <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                    Published with GitBook
+                    本书使用 GitBook 发布
                 </a>
             </li>
             
@@ -827,6 +831,45 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x5229;&#x7528;scan&#x548C;scroll&#x5904;&#x7406;&#x5927;&#x7ED3;&#x679C;&#x96C6;">&#x5229;&#x7528;Scan&#x548C;Scroll&#x5904;&#x7406;&#x5927;&#x7ED3;&#x679C;&#x96C6;</h1>
+<p>Elasticsearch&#x5728;&#x5904;&#x7406;&#x5927;&#x7ED3;&#x679C;&#x96C6;&#x65F6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;scan&#x548C;scroll&#x3002;&#x5728;Spring Data Elasticsearch&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5411;&#x4E0B;&#x9762;&#x90A3;&#x6837;&#x4F7F;&#x7528;<em>ElasticsearchTemplate</em>&#x6765;&#x4F7F;&#x7528;scan&#x548C;scroll&#x5904;&#x7406;&#x5927;&#x7ED3;&#x679C;&#x96C6;&#x3002;</p>
+<p>Example 39. Using Scan and Scroll(&#x4F7F;&#x7528;scan&#x548C;scroll)</p>
+<pre><code class="lang-java">SearchQuery searchQuery = <span class="hljs-keyword">new</span> NativeSearchQueryBuilder()
+    .withQuery(matchAllQuery())
+    .withIndices(<span class="hljs-string">&quot;test-index&quot;</span>)
+    .withTypes(<span class="hljs-string">&quot;test-type&quot;</span>)
+    .withPageable(<span class="hljs-keyword">new</span> PageRequest(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>))
+    .build();
+String scrollId = elasticsearchTemplate.scan(searchQuery,<span class="hljs-number">1000</span>,<span class="hljs-keyword">false</span>);
+List&lt;SampleEntity&gt; sampleEntities = <span class="hljs-keyword">new</span> ArrayList&lt;SampleEntity&gt;();
+<span class="hljs-keyword">boolean</span> hasRecords = <span class="hljs-keyword">true</span>;
+<span class="hljs-keyword">while</span> (hasRecords){
+    Page&lt;SampleEntity&gt; page = elasticsearchTemplate.scroll(scrollId, <span class="hljs-number">5000L</span> , <span class="hljs-keyword">new</span> ResultsMapper&lt;SampleEntity&gt;()
+    {
+        <span class="hljs-annotation">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> Page&lt;SampleEntity&gt; <span class="hljs-title">mapResults</span><span class="hljs-params">(SearchResponse response)</span> </span>{
+            List&lt;SampleEntity&gt; chunk = <span class="hljs-keyword">new</span> ArrayList&lt;SampleEntity&gt;();
+            <span class="hljs-keyword">for</span>(SearchHit searchHit : response.getHits()){
+                <span class="hljs-keyword">if</span>(response.getHits().getHits().length &lt;= <span class="hljs-number">0</span>) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+                }
+                SampleEntity user = <span class="hljs-keyword">new</span> SampleEntity();
+                user.setId(searchHit.getId());
+                user.setMessage((String)searchHit.getSource().get(<span class="hljs-string">&quot;message&quot;</span>));
+                chunk.add(user);
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PageImpl&lt;SampleEntity&gt;(chunk);
+        }
+    });
+    <span class="hljs-keyword">if</span>(page != <span class="hljs-keyword">null</span>) {
+        sampleEntities.addAll(page.getContent());
+        hasRecords = page.hasNextPage();
+    }
+    <span class="hljs-keyword">else</span>{
+        hasRecords = <span class="hljs-keyword">false</span>;
+    }
+    }
+}
+</code></pre>
 
                     
                     </section>
@@ -847,6 +890,14 @@
 
         
 <script src="../../gitbook/app.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
@@ -870,7 +921,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"disqus":{"shortName":"spring-data-elasticsearch","useIdentifier":false},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>

@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="zh-hans" >
     
     <head>
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>附录A 命名空间参考 | README</title>
+        <title>附录A 命名空间参考文档 | README</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.5">
@@ -19,6 +19,10 @@
         <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
     <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
     
         
         <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
@@ -50,10 +54,10 @@
         
     <div class="book"
         data-level="6.1"
-        data-chapter-title="附录A 命名空间参考"
+        data-chapter-title="附录A 命名空间参考文档"
         data-filepath="6/6.1.md"
         data-basepath=".."
-        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
+        data-revision="Wed Dec 23 2015 18:55:59 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -76,7 +80,7 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Introduction
+                        介绍
                     </a>
             
             
@@ -737,7 +741,7 @@
                         
                             <b>6.1.</b>
                         
-                        附录A 命名空间参考
+                        附录A 命名空间参考文档
                     </a>
             
             
@@ -752,7 +756,7 @@
                         
                             <b>6.2.</b>
                         
-                        附录B 填充命名空间参考
+                        附录B Populators命名空间参考文档
                     </a>
             
             
@@ -799,7 +803,7 @@
             <li class="divider"></li>
             <li>
                 <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                    Published with GitBook
+                    本书使用 GitBook 发布
                 </a>
             </li>
             
@@ -827,6 +831,39 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x9644;&#x5F55;a-&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x53C2;&#x8003;">&#x9644;&#x5F55;A &#x547D;&#x540D;&#x7A7A;&#x95F4;&#x53C2;&#x8003;</h1>
+<h4 id="&#x5143;&#x7D20;"><repositories>&#x5143;&#x7D20;</repositories></h4>
+<p><repositories>&#x5143;&#x7D20;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5C5E;&#x6027;&#x5C31;&#x662F;base-package,&#x7528;&#x6765;&#x5B9A;&#x4E49;&#x67E5;&#x627E;Spring Data repository&#x63A5;&#x53E3;&#x65F6;&#x626B;&#x63CF;&#x5305;&#x7684;&#x8DEF;&#x5F84;&#x3002;</repositories></p>
+<p>Table 3.&#x5C5E;&#x6027;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x540D;&#x79F0;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">base-package</td>
+<td style="text-align:left">&#x5B9A;&#x4E49;&#x67E5;&#x627E;&#x6240;&#x6709;&#x7EE7;&#x627F;*Repository&#x7684;repository&#x63A5;&#x53E3;&#x65F6;&#x6240;&#x626B;&#x63CF;&#x5305;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x8BE5;&#x8DEF;&#x5F84;&#x4E0B;&#x6240;&#x6709;&#x7684;&#x5305;&#x90FD;&#x4F1A;&#x88AB;&#x626B;&#x63CF;&#x3002;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x7B26;</td>
+</tr>
+<tr>
+<td style="text-align:left">repository-impl-postfix</td>
+<td style="text-align:left">&#x5B9A;&#x4E49;&#x81EA;&#x5B9A;&#x4E49;repository&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x540E;&#x7F00;&#x3002;&#x6240;&#x6709;&#x540D;&#x5B57;&#x662F;&#x4EE5;&#x6307;&#x5B9A;&#x540E;&#x7F00;&#x7ED3;&#x5C3E;&#x7684;&#x7C7B;&#x90FD;&#x4F1A;&#x88AB;&#x770B;&#x505A;&#x662F;&#x81EA;&#x5B9A;&#x4E49;repository&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x662F;<em>Impl</em></td>
+</tr>
+<tr>
+<td style="text-align:left">query-lookup-strategy</td>
+<td style="text-align:left">&#x5B9A;&#x4E49;&#x521B;&#x5EFA;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x8BE6;&#x7EC6;&#x8BF7;&#x770B;<a href="../4/4.4/4.4.1.html">&#x67E5;&#x8BE2;&#x7B56;&#x7565;</a>,&#x9ED8;&#x8BA4;&#x91C7;&#x7528;<em>create-if-not-found</em>&#x7B56;&#x7565;</td>
+</tr>
+<tr>
+<td style="text-align:left">named-queries-location</td>
+<td style="text-align:left">&#x5B9A;&#x4E49;&#x5305;&#x542B;&#x5916;&#x90E8;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x7684;Properties&#x6587;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td style="text-align:left">consider-nested-repositories</td>
+<td style="text-align:left">&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x51B3;&#x5B9A;&#x4E86;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x5B9A;&#x4E49;&#x5D4C;&#x5957;&#x7684;repository&#x63A5;&#x53E3;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x662F;false</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -840,13 +877,21 @@
         <a href="../6/index.html" class="navigation navigation-prev " aria-label="Previous page: 附录"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../6/6.2.html" class="navigation navigation-next " aria-label="Next page: 附录B 填充命名空间参考"><i class="fa fa-angle-right"></i></a>
+        <a href="../6/6.2.html" class="navigation navigation-next " aria-label="Next page: 附录B Populators命名空间参考文档"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
 
         
 <script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
 
     
     <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
@@ -870,7 +915,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"disqus":{"shortName":"spring-data-elasticsearch","useIdentifier":false},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="zh-hans" >
     
     <head>
         
@@ -19,6 +19,10 @@
         <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
         
     <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-disqus/plugin.css">
+        
     
         
         <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
@@ -51,7 +55,7 @@
         data-chapter-title="附录D Repository查询返回类型"
         data-filepath="6/6.4.md"
         data-basepath=".."
-        data-revision="Sat Dec 19 2015 21:22:21 GMT+0800 (CST)"
+        data-revision="Wed Dec 23 2015 18:55:59 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -74,7 +78,7 @@
                 
                         <i class="fa fa-check"></i>
                         
-                        Introduction
+                        介绍
                     </a>
             
             
@@ -735,7 +739,7 @@
                         
                             <b>6.1.</b>
                         
-                        附录A 命名空间参考
+                        附录A 命名空间参考文档
                     </a>
             
             
@@ -750,7 +754,7 @@
                         
                             <b>6.2.</b>
                         
-                        附录B 填充命名空间参考
+                        附录B Populators命名空间参考文档
                     </a>
             
             
@@ -797,7 +801,7 @@
             <li class="divider"></li>
             <li>
                 <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-                    Published with GitBook
+                    本书使用 GitBook 发布
                 </a>
             </li>
             
@@ -825,6 +829,90 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="&#x9644;&#x5F55;d-repository&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;">&#x9644;&#x5F55;D Repository&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</h1>
+<h4 id="&#x652F;&#x6301;&#x7684;&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;">&#x652F;&#x6301;&#x7684;&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</h4>
+<p>&#x4E0B;&#x9762;&#x7684;&#x8868;&#x683C;&#x5217;&#x51FA;&#x4E86;Spring Data repositories&#x652F;&#x6301;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x3002;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x5B58;&#x50A8;&#x53EF;&#x80FD;&#x4E0D;&#x652F;&#x6301;&#x5168;&#x90E8;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x3002;</p>
+<blockquote>
+<p>&#x53EA;&#x6709;&#x652F;&#x6301;&#x5730;&#x7406;&#x7A7A;&#x95F4;&#x67E5;&#x8BE2;&#x7684;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x624D;&#x652F;&#x6301;GeoResult&#xFF0C;GeoResults&#xFF0C;GeoPage&#x7B49;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</p>
+</blockquote>
+<p>Table 6.Query return types(&#x67E5;&#x8BE2;&#x8FD4;&#x56DE;&#x503C;)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">void</td>
+<td style="text-align:left">&#x8868;&#x793A;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;</td>
+</tr>
+<tr>
+<td style="text-align:left">Primitives</td>
+<td style="text-align:left">&#x57FA;&#x672C;&#x7684;Java&#x7C7B;&#x578B;</td>
+</tr>
+<tr>
+<td style="text-align:left">Wrapper types</td>
+<td style="text-align:left">Java&#x7684;&#x5305;&#x88C5;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left">T</td>
+<td style="text-align:left">&#x6700;&#x591A;&#x53EA;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x3002;&#x6CA1;&#x6709;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x65F6;&#x8FD4;&#x56DE;null&#x3002;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x4E00;&#x4E2A;&#x7ED3;&#x679C;&#x4F1A;&#x629B;&#x51FA;IncorrectResultSizeDataAccessException&#x7684;&#x5F02;&#x5E38;</td>
+</tr>
+<tr>
+<td style="text-align:left">Iterator<T></T></td>
+<td style="text-align:left">&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;</td>
+</tr>
+<tr>
+<td style="text-align:left">Collection<T></T></td>
+<td style="text-align:left">&#x4E00;&#x4E2A;&#x96C6;&#x5408;</td>
+</tr>
+<tr>
+<td style="text-align:left">List<T></T></td>
+<td style="text-align:left">&#x4E00;&#x4E2A;&#x5217;&#x8868;</td>
+</tr>
+<tr>
+<td style="text-align:left">Optional<T></T></td>
+<td style="text-align:left">&#x8FD4;&#x56DE;Java 8&#x6216;Guava&#x4E2D;&#x7684;Optional&#x7C7B;&#x3002;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x3002;&#x5982;&#x679C;&#x8D85;&#x8FC7;&#x4E86;&#x4E00;&#x4E2A;&#x7ED3;&#x679C;&#x4F1A;&#x629B;&#x51FA;IncorrectResultSizeDataAccessException&#x7684;&#x5F02;&#x5E38;</td>
+</tr>
+<tr>
+<td style="text-align:left">Stream<T></T></td>
+<td style="text-align:left">Java 8&#x5F15;&#x5165;&#x7684;Stream&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left">Future<T></T></td>
+<td style="text-align:left">&#x4E00;&#x4E2A;Future&#x7C7B;&#xFF0C;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x5E26;&#x6709;@Async&#x6CE8;&#x89E3;&#xFF0C;&#x5E76;&#x5F00;&#x542F;Spring&#x5F02;&#x6B65;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x529F;&#x80FD;</td>
+</tr>
+<tr>
+<td style="text-align:left">CompletableFuture<T></T></td>
+<td style="text-align:left">&#x8FD4;&#x56DE;Java8&#x4E2D;&#x65B0;&#x5F15;&#x5165;&#x7684;CompletableFuture&#x7C7B;&#xFF0C;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x5E26;&#x6709;@Async&#x6CE8;&#x89E3;&#xFF0C;&#x5E76;&#x5F00;&#x542F;Spring&#x5F02;&#x6B65;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x529F;&#x80FD;</td>
+</tr>
+<tr>
+<td style="text-align:left">ListenableFuture</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;org.springframework.util.concurrent.ListenableFuture&#x7C7B;&#xFF0C;&#x67E5;&#x8BE2;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x5E26;&#x6709;@Async&#x6CE8;&#x89E3;&#xFF0C;&#x5E76;&#x5F00;&#x542F;Spring&#x5F02;&#x6B65;&#x6267;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x529F;&#x80FD;</td>
+</tr>
+<tr>
+<td style="text-align:left">Slice</td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x5927;&#x5C0F;&#x7684;&#x6570;&#x636E;&#x548C;&#x662F;&#x5426;&#x8FD8;&#x6709;&#x53EF;&#x7528;&#x6570;&#x636E;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x9700;&#x8981;&#x65B9;&#x6CD5;&#x5E26;&#x6709;Pageable&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:left">Page<T></T></td>
+<td style="text-align:left">&#x5728;Slice&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x9644;&#x52A0;&#x8FD4;&#x56DE;&#x603B;&#x6570;&#x7B49;&#x4FE1;&#x606F;&#x3002;&#x9700;&#x8981;&#x65B9;&#x6CD5;&#x5E26;&#x6709;Pageable&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:left">GeoResult<T></T></td>
+<td style="text-align:left">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x4F1A;&#x9644;&#x5E26;&#x8BF8;&#x5982;&#x5230;&#x76F8;&#x5173;&#x5730;&#x70B9;&#x8DDD;&#x79BB;&#x7B49;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td style="text-align:left">GeoResults<T></T></td>
+<td style="text-align:left">&#x8FD4;&#x56DE;GeoResult<T>&#x7684;&#x5217;&#x8868;&#xFF0C;&#x5E76;&#x9644;&#x5E26;&#x5230;&#x76F8;&#x5173;&#x5730;&#x70B9;&#x5E73;&#x5747;&#x8DDD;&#x79BB;&#x7B49;&#x4FE1;&#x606F;</T></td>
+</tr>
+<tr>
+<td style="text-align:left">GeoPage<T></T></td>
+<td style="text-align:left">&#x5206;&#x9875;&#x8FD4;&#x56DE;GeoResult<T>&#xFF0C;&#x5E76;&#x9644;&#x5E26;&#x5230;&#x76F8;&#x5173;&#x5730;&#x70B9;&#x5E73;&#x5747;&#x8DDD;&#x79BB;&#x7B49;&#x4FE1;&#x606F;</T></td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -843,6 +931,14 @@
 
         
 <script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-disqus/plugin.js"></script>
+    
 
     
     <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
@@ -866,7 +962,7 @@
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    var config = {"disqus":{"shortName":"spring-data-elasticsearch","useIdentifier":false},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
     gitbook.start(config);
 });
 </script>

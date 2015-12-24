@@ -7,6 +7,11 @@
 英文原版地址:[Spring Data Elasticsearch](http://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html)
 
 ---------------------------------
+
+阅读地址：[http://es.yemengying.com](http://es.yemengying.com)   
+博客地址：[giraffe's home](http://yemengying.com)
+
+---------------------------------
 参考文档
 
 * http://www.ibm.com/developerworks/cn/opensource/os-cn-spring-jpa/

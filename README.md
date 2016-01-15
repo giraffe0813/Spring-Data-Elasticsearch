@@ -8,6 +8,7 @@
 
 ---------------------------------
 
+下载地址：[download](https://www.gitbook.com/book/giraffe0813/spring-data-elasticsearch/details)   
 阅读地址：[http://es.yemengying.com](http://es.yemengying.com)   
 博客地址：[giraffe's home](http://yemengying.com)
 
@@ -43,5 +44,6 @@
 
 
 
+Created by [giraffe0813](https://github.com/giraffe0813)
 This is a book powered by [GitBook](https://github.com/GitbookIO/gitbook).
 

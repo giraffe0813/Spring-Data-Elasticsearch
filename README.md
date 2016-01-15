@@ -7,6 +7,10 @@
 英文原版地址:[Spring Data Elasticsearch](http://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html)
 
 ---------------------------------
+spring-data-elasticsearch 例子：[github](https://github.com/BioMedCentralLtd/spring-data-elasticsearch-sample-application)
+spring-data-elasticsearch 与 Spring web结合 例子:[github](https://github.com/giraffe0813/spring-data-es-web)
+
+---------------------------------
 
 下载地址：[download](https://www.gitbook.com/book/giraffe0813/spring-data-elasticsearch/details)   
 阅读地址：[http://es.yemengying.com](http://es.yemengying.com)   

@@ -1,6 +1,6 @@
 # README
 
->因为工作需要学习Elasticsearch, 发现关于Spring-Data-Elasticsearch的文档非常少, 而且没有对应官方文档的中译版本，所以利用早起的空闲时间翻译一下。如果对Spring Data的其他模块(eg:Spring Data Jpa)比较了解，可以直接看[第五章](5/README.md)。
+>因为工作需要学习Elasticsearch, 发现关于Spring-Data-Elasticsearch的文档非常少, 而且没有对应官方文档的中译版本，所以利用早起的空闲时间翻译一下。基于1.3.2.RELEASE版本，如果对Spring Data的其他模块(eg:Spring Data Jpa)比较了解，可以直接看[第五章](5/README.md)。
 
 ---------------------------------
 
